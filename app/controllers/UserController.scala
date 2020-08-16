@@ -10,29 +10,20 @@ import javax.inject.Inject
 class UserController @Inject()(components: MessagesControllerComponents)
   extends MessagesAbstractController(components) {
 
-  /**
-   * 一覧表示
-   */
-  def signUp = TODO
+  def signUp = Action { implicit request: Request[AnyContent] =>
+    Ok(views.html.signUp())
+  }
 
-  /**
-   * 登録実行
-   */
+
   def create = TODO
 
-  /**
-   * 編集画面表示
-   */
-  def edit(id: Option[Long]) = TODO
 
-  /**
-   * 更新実行
-   */
+  def edit(id: Option[String]) = TODO
+
+
   def update = TODO
 
-  /**
-   * 削除実行
-   */
+
   def remove(id: Long) = TODO
 
 }
