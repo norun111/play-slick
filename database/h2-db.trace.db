@@ -28,3 +28,19 @@ Caused by: org.h2.jdbc.JdbcSQLException: ユーザ名またはパスワードが
 Wrong user name or password [28000-196]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
 	... 19 more
+2020-08-16 17:59:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: SQLステートメントに文法エラーがあります "DROP TABLE IF EXISTS[*]"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "DROP TABLE IF EXISTS[*]"; expected "identifier"; SQL statement:
+DROP TABLE IF EXISTS [42001-197]
+2020-08-16 17:59:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: テーブル "USER" はすでに存在します
+Table "USER" already exists; SQL statement:
+CREATE TABLE User (
+id UUID NOT NULL DEFAULT RANDOM_UUID(),
+name varchar(255) NOT NULL,
+email varchar(255) NOT NULL,
+password varchar(60) NOT NULL,
+created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (id),
+UNIQUE (name, email)
+) [42101-197]
