@@ -9,6 +9,7 @@ import scalikejdbc._
 import javax.inject.Inject
 import models._
 import daos.User
+import play.api.i18n.I18nSupport
 
 object UserController {
   // フォームの値を格納するケースクラス
@@ -26,7 +27,7 @@ object UserController {
 }
 
 class UserController @Inject()(components: MessagesControllerComponents)
-  extends MessagesAbstractController(components) {
+  extends MessagesAbstractController(components) with I18nSupport {
 
   import UserController._
 
