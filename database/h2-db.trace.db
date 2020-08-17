@@ -28,3 +28,224 @@ Caused by: org.h2.jdbc.JdbcSQLException: ユーザ名またはパスワードが
 Wrong user name or password [28000-196]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
 	... 19 more
+2020-08-16 17:59:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: SQLステートメントに文法エラーがあります "DROP TABLE IF EXISTS[*]"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "DROP TABLE IF EXISTS[*]"; expected "identifier"; SQL statement:
+DROP TABLE IF EXISTS [42001-197]
+2020-08-16 17:59:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: テーブル "USER" はすでに存在します
+Table "USER" already exists; SQL statement:
+CREATE TABLE User (
+id UUID NOT NULL DEFAULT RANDOM_UUID(),
+name varchar(255) NOT NULL,
+email varchar(255) NOT NULL,
+password varchar(60) NOT NULL,
+created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (id),
+UNIQUE (name, email)
+) [42101-197]
+2020-08-18 03:16:59 database: flush
+org.h2.message.DbException: 一般エラー: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]" [50000-197]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:307)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:95)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2506)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:383)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:364)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2934)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:155)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:100)
+	at org.h2.engine.Database.getPageStore(Database.java:2538)
+	at org.h2.engine.Database.open(Database.java:709)
+	at org.h2.engine.Database.openDatabase(Database.java:286)
+	at org.h2.engine.Database.<init>(Database.java:280)
+	at org.h2.engine.Engine.openSession(Engine.java:66)
+	at org.h2.engine.Engine.openSession(Engine.java:179)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:157)
+	at org.h2.engine.Engine.createSession(Engine.java:140)
+	at org.h2.engine.Engine.createSession(Engine.java:28)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:351)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:733)
+	at org.h2.server.web.WebApp.login(WebApp.java:954)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:134)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLException: 一般エラー: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]" [50000-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	... 29 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:870)
+	at org.h2.mvstore.FileStore.open(FileStore.java:173)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:350)
+	... 23 more
+2020-08-18 03:30:51 database: flush
+org.h2.message.DbException: 一般エラー: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]" [50000-197]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:307)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:95)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2506)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:383)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:364)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2934)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:155)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:100)
+	at org.h2.engine.Database.getPageStore(Database.java:2538)
+	at org.h2.engine.Database.open(Database.java:709)
+	at org.h2.engine.Database.openDatabase(Database.java:286)
+	at org.h2.engine.Database.<init>(Database.java:280)
+	at org.h2.engine.Engine.openSession(Engine.java:66)
+	at org.h2.engine.Engine.openSession(Engine.java:179)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:157)
+	at org.h2.engine.Engine.createSession(Engine.java:140)
+	at org.h2.engine.Engine.createSession(Engine.java:28)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:351)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:733)
+	at org.h2.server.web.WebApp.login(WebApp.java:954)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:134)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLException: 一般エラー: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]" [50000-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	... 29 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:870)
+	at org.h2.mvstore.FileStore.open(FileStore.java:173)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:350)
+	... 23 more
+2020-08-18 03:31:29 database: flush
+org.h2.message.DbException: 一般エラー: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]" [50000-197]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:307)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:95)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2506)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:383)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:364)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2934)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:155)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:100)
+	at org.h2.engine.Database.getPageStore(Database.java:2538)
+	at org.h2.engine.Database.open(Database.java:709)
+	at org.h2.engine.Database.openDatabase(Database.java:286)
+	at org.h2.engine.Database.<init>(Database.java:280)
+	at org.h2.engine.Engine.openSession(Engine.java:66)
+	at org.h2.engine.Engine.openSession(Engine.java:179)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:157)
+	at org.h2.engine.Engine.createSession(Engine.java:140)
+	at org.h2.engine.Engine.createSession(Engine.java:28)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:351)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:733)
+	at org.h2.server.web.WebApp.login(WebApp.java:954)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:134)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLException: 一般エラー: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]" [50000-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	... 29 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:870)
+	at org.h2.mvstore.FileStore.open(FileStore.java:173)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:350)
+	... 23 more
+2020-08-18 03:32:05 database: flush
+org.h2.message.DbException: 一般エラー: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]" [50000-197]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:307)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:95)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2506)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:383)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:364)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2934)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:155)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:100)
+	at org.h2.engine.Database.getPageStore(Database.java:2538)
+	at org.h2.engine.Database.open(Database.java:709)
+	at org.h2.engine.Database.openDatabase(Database.java:286)
+	at org.h2.engine.Database.<init>(Database.java:280)
+	at org.h2.engine.Engine.openSession(Engine.java:66)
+	at org.h2.engine.Engine.openSession(Engine.java:179)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:157)
+	at org.h2.engine.Engine.createSession(Engine.java:140)
+	at org.h2.engine.Engine.createSession(Engine.java:28)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:351)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:733)
+	at org.h2.server.web.WebApp.login(WebApp.java:954)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:134)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLException: 一般エラー: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]" [50000-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	... 29 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:870)
+	at org.h2.mvstore.FileStore.open(FileStore.java:173)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:350)
+	... 23 more
+2020-08-18 03:32:06 database: flush
+org.h2.message.DbException: 一般エラー: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]" [50000-197]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:307)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:95)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2506)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:383)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:364)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2934)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:155)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:100)
+	at org.h2.engine.Database.getPageStore(Database.java:2538)
+	at org.h2.engine.Database.open(Database.java:709)
+	at org.h2.engine.Database.openDatabase(Database.java:286)
+	at org.h2.engine.Database.<init>(Database.java:280)
+	at org.h2.engine.Engine.openSession(Engine.java:66)
+	at org.h2.engine.Engine.openSession(Engine.java:179)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:157)
+	at org.h2.engine.Engine.createSession(Engine.java:140)
+	at org.h2.engine.Engine.createSession(Engine.java:28)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:351)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:733)
+	at org.h2.server.web.WebApp.login(WebApp.java:954)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:134)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLException: 一般エラー: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]" [50000-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	... 29 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:870)
+	at org.h2.mvstore.FileStore.open(FileStore.java:173)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:350)
+	... 23 more
