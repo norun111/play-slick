@@ -9,11 +9,11 @@ import scalikejdbc._
 import javax.inject.Inject
 import models._
 import daos.User
-import play.api.i18n.I18nSupport
+import play.api.i18n._
 
 object UserController {
   // フォームの値を格納するケースクラス
-  case class UserForm(id: String, name: String, email: String, password: String)
+  case class UserForm(id: String = UUID.randomUUID.toString, name: String, email: String, password: String)
 
   // formから送信されたデータ ⇔ ケースクラスの変換を行う
   val userForm = Form(
@@ -31,8 +31,8 @@ class UserController @Inject()(components: MessagesControllerComponents)
 
   import UserController._
 
-  def signUp = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.signUp())
+  def signUp = Action { implicit request =>
+    Ok(views.html.user.signUp.apply(userForm))
   }
 
 
@@ -41,7 +41,7 @@ class UserController @Inject()(components: MessagesControllerComponents)
       implicit session =>
         userForm.bindFromRequest.fold(
           error => {
-            BadRequest(views.html.signUp())
+            BadRequest(views.html.user.signUp.apply(error))
           },
           form => {
             val uuid = UUID.randomUUID
