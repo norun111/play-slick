@@ -1,4 +1,3 @@
-
 name := """play-slick"""
 organization := "play-slick"
 
@@ -8,7 +7,7 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
 scalaVersion := "2.12.6"
 
-resolvers += Resolver.jcenterRepo // silhouette
+resolvers += Resolver.jcenterRepo
 
 lazy val defaultDependencies = {
   val scalikeJdbcDependencies = {
@@ -24,16 +23,14 @@ lazy val defaultDependencies = {
     evolutions, jdbc, guice,
     "com.h2database"  %  "h2"                 % "1.4.197",
     "ch.qos.logback"  %  "logback-classic"    % "1.2.+",
-    "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test
+    "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test,
+    "com.mohiva" %% "play-silhouette" % "5.0.7",
+    "com.mohiva" %% "play-silhouette-password-bcrypt" % "5.0.7",
+    "com.mohiva" %% "play-silhouette-crypto-jca" % "5.0.7",
+    "com.mohiva" %% "play-silhouette-persistence" % "5.0.7",
+    "com.mohiva" %% "play-silhouette-testkit" % "5.0.7" % "test",
   ) ++ scalikeJdbcDependencies
 }
-libraryDependencies ++= Seq(
-  "com.mohiva" %% "play-silhouette" % "5.0.7",
-  "com.mohiva" %% "play-silhouette-password-bcrypt" % "5.0.7",
-  "com.mohiva" %% "play-silhouette-crypto-jca" % "5.0.7",
-  "com.mohiva" %% "play-silhouette-persistence" % "5.0.7",
-  "com.mohiva" %% "play-silhouette-testkit" % "5.0.7" % "test",
-)
 
 libraryDependencies ++= defaultDependencies
 
