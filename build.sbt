@@ -8,6 +8,8 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
 scalaVersion := "2.12.6"
 
+resolvers += Resolver.jcenterRepo // silhouette
+
 lazy val defaultDependencies = {
   val scalikeJdbcDependencies = {
     val scalikeJdbcVersion = "3.2.3"
@@ -25,6 +27,13 @@ lazy val defaultDependencies = {
     "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test
   ) ++ scalikeJdbcDependencies
 }
+libraryDependencies ++= Seq(
+  "com.mohiva" %% "play-silhouette" % "5.0.7",
+  "com.mohiva" %% "play-silhouette-password-bcrypt" % "5.0.7",
+  "com.mohiva" %% "play-silhouette-crypto-jca" % "5.0.7",
+  "com.mohiva" %% "play-silhouette-persistence" % "5.0.7",
+  "com.mohiva" %% "play-silhouette-testkit" % "5.0.7" % "test",
+)
 
 libraryDependencies ++= defaultDependencies
 
