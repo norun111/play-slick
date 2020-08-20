@@ -1,15 +1,15 @@
-package controllers
+package controllers.user
 
 import java.util.UUID
 
-import play.api.mvc._
-import play.api.data._
-import play.api.data.Forms._
-import scalikejdbc._
+import controllers.routes
 import javax.inject.Inject
-import models._
-import daos.User
+import models.daos.User
+import play.api.data.Forms._
+import play.api.data._
 import play.api.i18n._
+import play.api.mvc._
+import scalikejdbc._
 
 object UserController {
   // フォームの値を格納するケースクラス
