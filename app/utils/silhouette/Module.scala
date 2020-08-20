@@ -8,7 +8,7 @@ import com.mohiva.play.silhouette.api.repositories.AuthInfoRepository
 import com.mohiva.play.silhouette.api.services._
 import com.mohiva.play.silhouette.api.util._
 import com.mohiva.play.silhouette.api.{ Environment, EventBus, Silhouette, SilhouetteProvider }
-import com.mohiva.play.silhouette.crypto.{ JcaCookieSigner, JcaCookieSignerSettings, JcaCrypter, JcaCrypterSettings }
+import com.mohiva.play.silhouette.crypto.{ JcaSigner, JcaSignerSettings, JcaCrypter, JcaCrypterSettings }
 import com.mohiva.play.silhouette.impl.authenticators._
 import com.mohiva.play.silhouette.impl.providers._
 import com.mohiva.play.silhouette.impl.services._
@@ -76,9 +76,9 @@ class Module extends AbstractModule with ScalaModule {
    * @return The cookie signer for the authenticator.
    */
   @Provides
-  def provideAuthenticatorCookieSigner(configuration: Configuration): CookieSigner = {
-    val config = configuration.underlying.as[JcaCookieSignerSettings]("silhouette.authenticator.cookie.signer")
-    new JcaCookieSigner(config)
+  def provideAuthenticatorCookieSigner(configuration: Configuration): Signer = {
+    val config = configuration.underlying.as[JcaSignerSettings]("silhouette.authenticator.cookie.signer")
+    new  JcaSigner(config)
   }
 
   /**
@@ -117,7 +117,7 @@ class Module extends AbstractModule with ScalaModule {
    */
   @Provides
   def provideAuthenticatorService(
-                                   cookieSigner: CookieSigner,
+                                   cookieSigner: Signer,
                                    crypter: Crypter,
                                    fingerprintGenerator: FingerprintGenerator,
                                    idGenerator: IDGenerator,
