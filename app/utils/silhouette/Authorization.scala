@@ -31,7 +31,7 @@ case class WithServices(allOf: String*) extends Authorization[User, CookieAuthen
     WithServices.isAuthorized(user, allOf: _*)
   }
 }
-//object WithServices {
-//  def isAuthorized(user: User, allOf: String*): Boolean =
-//    allOf.intersect(user.services).size == allOf.size || user.services.contains("master")
-//}
+object WithServices {
+  def isAuthorized(user: User, allOf: String*): Boolean =
+    allOf.intersect(user.services).size == allOf.size || user.services.contains("master")
+}
