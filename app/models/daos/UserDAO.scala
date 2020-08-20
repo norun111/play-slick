@@ -4,7 +4,10 @@ import java.time.ZonedDateTime
 import java.util.UUID
 import models.User
 import scalikejdbc._
-
+import utils.silhouette.IdentitySilhouette
+import com.mohiva.play.silhouette.password.BCryptPasswordHasher
+import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
 
 object User extends SQLSyntaxSupport[User] {
   def apply(u: SyntaxProvider[User])(rs: WrappedResultSet): User = apply(u.resultName)(rs)
@@ -19,10 +22,18 @@ object User extends SQLSyntaxSupport[User] {
 
   override val autoSession = AutoSession
 
-  def find(id: String)(implicit session: DBSession = autoSession): Option[User] = {
+  def findUser(id: String)(implicit session: DBSession = autoSession): Option[User] = {
     withSQL{
       select.from(User as u).where.eq(u.id, id)
     }.map(User(u.resultName)).single.apply()
+  }
+
+  def findAllUsers(implicit session: DBSession = autoSession) = {
+    withSQL {
+      select.from(User as u).orderBy(u.created_at.desc)
+    }.map(User(u.resultName))
+      .list
+      .apply()
   }
 
   def create(id: String = UUID.randomUUID.toString,
@@ -44,6 +55,13 @@ object User extends SQLSyntaxSupport[User] {
       ).where.eq(column.id, entity.id)
     }.update.apply()
     entity
+  }
+
+  def findByEmail(email: String)(
+    implicit session: DBSession = autoSession): Option[User] = {
+    withSQL {
+      select.from(User as u).where.eq(u.email, email)
+    }.map(User(u.resultName)).single.apply()
   }
 
 }
