@@ -4,9 +4,9 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
-GET     /signUp                           controllers.UserController.signUp
-POST    /create                           controllers.UserController.create
+GET     /                                 controllers.HomeController.index
+GET     /signUp                           controllers.SignUpController.signUp
+POST    /create                           controllers.SignUpController.create
 
 
 #
