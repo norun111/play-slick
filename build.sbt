@@ -29,6 +29,7 @@ lazy val defaultDependencies = {
     "com.mohiva" %% "play-silhouette-crypto-jca" % "5.0.7",
     "com.mohiva" %% "play-silhouette-persistence" % "5.0.7",
     "com.mohiva" %% "play-silhouette-testkit" % "5.0.7" % "test",
+    "net.codingwell" %% "scala-guice" % "4.2.11",
   ) ++ scalikeJdbcDependencies
 }
 
