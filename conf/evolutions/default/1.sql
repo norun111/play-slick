@@ -9,7 +9,7 @@ CREATE TABLE User (
     password varchar(60) NOT NULL,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
-    UNIQUE (name, email)
+    UNIQUE (email)
 );
 
 # --- !Downs

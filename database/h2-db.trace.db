@@ -249,3 +249,190 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:/Users/tomoy
 	at org.h2.mvstore.FileStore.open(FileStore.java:173)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:350)
 	... 23 more
+2020-08-20 11:00:27 database: flush
+org.h2.message.DbException: 一般エラー: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]" [50000-197]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:307)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:95)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2506)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:383)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:364)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2934)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:155)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:100)
+	at org.h2.engine.Database.getPageStore(Database.java:2538)
+	at org.h2.engine.Database.open(Database.java:709)
+	at org.h2.engine.Database.openDatabase(Database.java:286)
+	at org.h2.engine.Database.<init>(Database.java:280)
+	at org.h2.engine.Engine.openSession(Engine.java:66)
+	at org.h2.engine.Engine.openSession(Engine.java:179)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:157)
+	at org.h2.engine.Engine.createSession(Engine.java:140)
+	at org.h2.engine.Engine.createSession(Engine.java:28)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:351)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:733)
+	at org.h2.server.web.WebApp.login(WebApp.java:954)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:134)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLException: 一般エラー: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]" [50000-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	... 29 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/Users/tomoyaueno/play-slick/database/h2-db.mv.db [1.4.197/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:870)
+	at org.h2.mvstore.FileStore.open(FileStore.java:173)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:350)
+	... 23 more
+2020-08-20 12:16:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: SQLステートメントに文法エラーがあります "DROP TABLE IF EXISTS[*]"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "DROP TABLE IF EXISTS[*]"; expected "identifier"; SQL statement:
+DROP TABLE IF EXISTS [42001-197]
+2020-08-20 12:16:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: テーブル "USER" はすでに存在します
+Table "USER" already exists; SQL statement:
+CREATE TABLE User (
+id UUID NOT NULL DEFAULT RANDOM_UUID(),
+name varchar(255) NOT NULL,
+email varchar(255) NOT NULL,
+password varchar(60) NOT NULL,
+created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (id),
+) [42101-197]
+2020-08-20 12:20:00 jdbc[5]: null
+org.h2.message.DbException: アプリケーションにより閉じられていない接続がガベージコレクトされました
+The connection was not closed by the application and is garbage collected [90018-197]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:197)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:137)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:733)
+	at org.h2.server.web.WebApp.login(WebApp.java:954)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:134)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLException: アプリケーションにより閉じられていない接続がガベージコレクトされました
+The connection was not closed by the application and is garbage collected [90018-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	... 14 more
+2020-08-20 12:20:51 jdbc[6]: null
+org.h2.message.DbException: アプリケーションにより閉じられていない接続がガベージコレクトされました
+The connection was not closed by the application and is garbage collected [90018-197]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:197)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:137)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:117)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:123)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:365)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:194)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:460)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:534)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81)
+	at play.api.db.HikariCPConnectionPool.$anonfun$create$1(HikariCPModule.scala:51)
+	at scala.util.Try$.apply(Try.scala:209)
+	at play.api.db.HikariCPConnectionPool.create(HikariCPModule.scala:47)
+	at play.api.db.PooledDatabase.createDataSource(Databases.scala:205)
+	at play.api.db.DefaultDatabase.dataSource$lzycompute(Databases.scala:123)
+	at play.api.db.DefaultDatabase.dataSource(Databases.scala:121)
+	at play.api.db.DefaultDatabase.getConnection(Databases.scala:142)
+	at play.api.db.DefaultDatabase.getConnection(Databases.scala:138)
+	at play.api.db.DefaultDBApi.$anonfun$connect$1(DefaultDBApi.scala:44)
+	at play.api.db.DefaultDBApi.$anonfun$connect$1$adapted(DefaultDBApi.scala:42)
+	at scala.collection.immutable.List.foreach(List.scala:389)
+	at play.api.db.DefaultDBApi.connect(DefaultDBApi.scala:42)
+	at play.api.db.DBApiProvider.get$lzycompute(DBModule.scala:86)
+	at play.api.db.DBApiProvider.get(DBModule.scala:75)
+	at play.api.db.DBApiProvider.get(DBModule.scala:56)
+	at com.google.inject.internal.ProviderInternalFactory.provision(ProviderInternalFactory.java:81)
+	at com.google.inject.internal.BoundProviderFactory.provision(BoundProviderFactory.java:72)
+	at com.google.inject.internal.ProviderInternalFactory.circularGet(ProviderInternalFactory.java:61)
+	at com.google.inject.internal.BoundProviderFactory.get(BoundProviderFactory.java:62)
+	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.MembersInjectorImpl$1.call(MembersInjectorImpl.java:93)
+	at com.google.inject.internal.MembersInjectorImpl$1.call(MembersInjectorImpl.java:80)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.MembersInjectorImpl.injectAndNotify(MembersInjectorImpl.java:80)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:62)
+	at com.google.inject.internal.InjectorImpl.injectMembers(InjectorImpl.java:987)
+	at com.google.inject.util.Providers$GuicifiedProviderWithDependencies.initialize(Providers.java:149)
+	at com.google.inject.util.Providers$GuicifiedProviderWithDependencies$$FastClassByGuice$$2a7177aa.invoke(<generated>)
+	at com.google.inject.internal.SingleMethodInjector$1.invoke(SingleMethodInjector.java:54)
+	at com.google.inject.internal.SingleMethodInjector.inject(SingleMethodInjector.java:89)
+	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+	at com.google.inject.internal.MembersInjectorImpl$1.call(MembersInjectorImpl.java:93)
+	at com.google.inject.internal.MembersInjectorImpl$1.call(MembersInjectorImpl.java:80)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1085)
+	at com.google.inject.internal.MembersInjectorImpl.injectAndNotify(MembersInjectorImpl.java:80)
+	at com.google.inject.internal.Initializer$InjectableReference.get(Initializer.java:223)
+	at com.google.inject.internal.Initializer.injectAll(Initializer.java:132)
+	at com.google.inject.internal.InternalInjectorCreator.injectDynamically(InternalInjectorCreator.java:174)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:110)
+	at com.google.inject.Guice.createInjector(Guice.java:99)
+	at com.google.inject.Guice.createInjector(Guice.java:84)
+	at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:185)
+	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:137)
+	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
+	at play.core.server.DevServerStart$$anon$1.$anonfun$reload$3(DevServerStart.scala:174)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.core.server.DevServerStart$$anon$1.reload(DevServerStart.scala:171)
+	at play.core.server.DevServerStart$$anon$1.get(DevServerStart.scala:124)
+	at play.core.server.AkkaHttpServer.handleRequest(AkkaHttpServer.scala:202)
+	at play.core.server.AkkaHttpServer.$anonfun$createServerBinding$1(AkkaHttpServer.scala:117)
+	at akka.stream.impl.fusing.MapAsync$$anon$25.onPush(Ops.scala:1194)
+	at akka.stream.impl.fusing.GraphInterpreter.processPush(GraphInterpreter.scala:519)
+	at akka.stream.impl.fusing.GraphInterpreter.processEvent(GraphInterpreter.scala:482)
+	at akka.stream.impl.fusing.GraphInterpreter.execute(GraphInterpreter.scala:378)
+	at akka.stream.impl.fusing.GraphInterpreterShell.runBatch(ActorGraphInterpreter.scala:585)
+	at akka.stream.impl.fusing.GraphInterpreterShell$AsyncInput.execute(ActorGraphInterpreter.scala:469)
+	at akka.stream.impl.fusing.GraphInterpreterShell.processEvent(ActorGraphInterpreter.scala:560)
+	at akka.stream.impl.fusing.ActorGraphInterpreter.akka$stream$impl$fusing$ActorGraphInterpreter$$processEvent(ActorGraphInterpreter.scala:742)
+	at akka.stream.impl.fusing.ActorGraphInterpreter$$anonfun$receive$1.applyOrElse(ActorGraphInterpreter.scala:757)
+	at akka.actor.Actor.aroundReceive(Actor.scala:517)
+	at akka.actor.Actor.aroundReceive$(Actor.scala:515)
+	at akka.stream.impl.fusing.ActorGraphInterpreter.aroundReceive(ActorGraphInterpreter.scala:667)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:590)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:559)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:257)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:224)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:234)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: org.h2.jdbc.JdbcSQLException: アプリケーションにより閉じられていない接続がガベージコレクトされました
+The connection was not closed by the application and is garbage collected [90018-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	... 87 more
+2020-08-20 12:20:52 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: SQLステートメントに文法エラーがあります "DROP TABLE IF EXISTS[*]"; 期待されるステートメント "identifier"
+Syntax error in SQL statement "DROP TABLE IF EXISTS[*]"; expected "identifier"; SQL statement:
+DROP TABLE IF EXISTS [42001-197]
+2020-08-20 12:20:55 jdbc[16]: exception
+org.h2.jdbc.JdbcSQLException: テーブル "USER" はすでに存在します
+Table "USER" already exists; SQL statement:
+CREATE TABLE User (
+id UUID NOT NULL DEFAULT RANDOM_UUID(),
+name varchar(255) NOT NULL,
+email varchar(255) NOT NULL,
+password varchar(60) NOT NULL,
+created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (id),
+UNIQUE (email)
+) [42101-197]
