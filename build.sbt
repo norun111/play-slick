@@ -8,7 +8,9 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
 scalaVersion := "2.12.6"
 
-resolvers += Resolver.jcenterRepo // silhouette
+resolvers += Resolver.jcenterRepo
+// Resolver is needed only for SNAPSHOT versions
+resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
 
 lazy val defaultDependencies = {
   val scalikeJdbcDependencies = {
@@ -24,16 +26,18 @@ lazy val defaultDependencies = {
     evolutions, jdbc, guice,
     "com.h2database"  %  "h2"                 % "1.4.197",
     "ch.qos.logback"  %  "logback-classic"    % "1.2.+",
-    "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test
+    "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test,
+    "com.mohiva" %% "play-silhouette" % "5.0.7",
+    "com.mohiva" %% "play-silhouette-password-bcrypt" % "5.0.7",
+    "com.mohiva" %% "play-silhouette-crypto-jca" % "5.0.7",
+    "com.mohiva" %% "play-silhouette-persistence" % "5.0.7",
+    "com.mohiva" %% "play-silhouette-testkit" % "5.0.7" % "test",
+    "net.codingwell" %% "scala-guice" % "4.2.11",
+    "com.iheart" %% "ficus" % "1.4.7",
+    "com.adrianhurt" %% "play-bootstrap" % "1.6-P26-B3",
+    "com.typesafe.play" %% "play-mailer" % "6.0.1"
   ) ++ scalikeJdbcDependencies
 }
-libraryDependencies ++= Seq(
-  "com.mohiva" %% "play-silhouette" % "5.0.7",
-  "com.mohiva" %% "play-silhouette-password-bcrypt" % "5.0.7",
-  "com.mohiva" %% "play-silhouette-crypto-jca" % "5.0.7",
-  "com.mohiva" %% "play-silhouette-persistence" % "5.0.7",
-  "com.mohiva" %% "play-silhouette-testkit" % "5.0.7" % "test",
-)
 
 libraryDependencies ++= defaultDependencies
 
