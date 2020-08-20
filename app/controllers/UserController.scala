@@ -13,12 +13,11 @@ import play.api.i18n._
 
 object UserController {
   // フォームの値を格納するケースクラス
-  case class UserForm(id: String = UUID.randomUUID.toString, name: String, email: String, password: String)
+  case class UserForm(name: String, email: String, password: String)
 
   // formから送信されたデータ ⇔ ケースクラスの変換を行う
   val userForm = Form(
     mapping(
-      "id"        -> nonEmptyText,
       "name"      -> nonEmptyText(minLength = 1, maxLength = 20),
       "email"     -> email,
       "password"  -> nonEmptyText(minLength = 8, maxLength = 60),
@@ -44,6 +43,7 @@ class UserController @Inject()(components: MessagesControllerComponents)
             BadRequest(views.html.user.signUp.apply(error))
           },
           form => {
+            println("Hi")
             val uuid = UUID.randomUUID
             User.create(uuid.toString, form.name, form.email, form.password)
             Redirect(routes.HomeController.index())
