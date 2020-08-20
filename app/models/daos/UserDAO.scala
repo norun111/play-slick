@@ -2,8 +2,6 @@ package models.daos
 
 import java.time.ZonedDateTime
 import java.util.UUID
-
-import javax.inject.Inject
 import models.User
 import scalikejdbc._
 
