@@ -21,7 +21,7 @@ import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits._
 import scala.concurrent.duration._
 import javax.inject.{ Inject, Singleton }
-import views.html.{ auth => viewsAuth }
+//import views.html.{ auth => viewsAuth }
 
 @Singleton
 class SignInController @Inject() (val silhouette: Silhouette[MyEnv],
@@ -35,6 +35,5 @@ class SignInController @Inject() (val silhouette: Silhouette[MyEnv],
                                   conf: Configuration,
                                   clock: Clock
                                  ) extends AuthController  {
-  {
 
 }
