@@ -1,49 +1,38 @@
 package models.daos
 
-import java.time.ZonedDateTime
 import java.util.UUID
+
+import com.mohiva.play.silhouette.api.LoginInfo
 import models.User
-import scalikejdbc._
 
+import scala.concurrent.Future
 
-object User extends SQLSyntaxSupport[User] {
-  def apply(u: SyntaxProvider[User])(rs: WrappedResultSet): User = apply(u.resultName)(rs)
-  def apply(u: ResultName[User])(rs: WrappedResultSet): User = new User(
-    id = rs.string(u.id),
-    name = rs.string(u.name),
-    email = rs.string(u.email),
-    password = rs.string(u.password)
-  )
+/**
+ * Give access to the user object.
+ */
+trait UserDAO {
 
-  val u = User.syntax("u")
+  /**
+   * Finds a user by its login info.
+   *
+   * @param loginInfo The login info of the user to find.
+   * @return The found user or None if no user for the given login info could be found.
+   */
+  def find(loginInfo: LoginInfo): Future[Option[User]]
 
-  override val autoSession = AutoSession
+  /**
+   * Finds a user by its user ID.
+   *
+   * @param userID The ID of the user to find.
+   * @return The found user or None if no user for the given ID could be found.
+   */
+  def find(userID: UUID): Future[Option[User]]
 
-  def find(id: String)(implicit session: DBSession = autoSession): Option[User] = {
-    withSQL{
-      select.from(User as u).where.eq(u.id, id)
-    }.map(User(u.resultName)).single.apply()
-  }
-
-  def create(id: String = UUID.randomUUID.toString,
-              name: String,
-              email: String,
-              password: String)(implicit session: DBSession = autoSession): Unit = {
-    withSQL {
-      insert.into(User).values(id, name, email, password, ZonedDateTime.now())
-    }.update.apply()
-  }
-
-  def save(entity: User)(implicit session: DBSession = autoSession): User = {
-    withSQL {
-      update(User).set(
-        column.id -> entity.id,
-        column.name -> entity.name,
-        column.email -> entity.email,
-        column.password -> entity.password
-      ).where.eq(column.id, entity.id)
-    }.update.apply()
-    entity
-  }
-
+  /**
+   * Saves a user.
+   *
+   * @param user The user to save.
+   * @return The saved user.
+   */
+  def save(user: User): Future[User]
 }
