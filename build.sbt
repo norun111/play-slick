@@ -31,13 +31,19 @@ lazy val defaultDependencies = {
     "com.mohiva" %% "play-silhouette-password-bcrypt" % "5.0.7",
     "com.mohiva" %% "play-silhouette-crypto-jca" % "5.0.7",
     "com.mohiva" %% "play-silhouette-persistence" % "5.0.7",
+    "com.mohiva" %% "play-silhouette-totp" % "7.0.0",
     "com.mohiva" %% "play-silhouette-testkit" % "5.0.7" % "test",
     "net.codingwell" %% "scala-guice" % "4.2.11",
     "com.iheart" %% "ficus" % "1.4.7",
     "com.adrianhurt" %% "play-bootstrap" % "1.6-P26-B3",
-    "com.typesafe.play" %% "play-mailer" % "6.0.1"
   ) ++ scalikeJdbcDependencies
 }
+
+libraryDependencies ++= Seq(
+  "com.enragedginger" %% "akka-quartz-scheduler" % "1.8.4-akka-2.6.x",
+  "com.typesafe.play" %% "play-mailer" % "6.0.1",
+  "com.typesafe.play" %% "play-mailer-guice" % "6.0.1",
+)
 
 libraryDependencies ++= defaultDependencies
 
