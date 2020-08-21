@@ -35,7 +35,6 @@ class ActivateAccountController @Inject() (
       case Some(user) if !user.activated =>
         authTokenService.create(user.userID).map { authToken =>
           val url = routes.ActivateAccountController.activate(authToken.id).absoluteURL()
-
           mailerClient.send(Email(
             subject = Messages("email.activate.account.subject"),
             from = Messages("email.from"),
