@@ -16,9 +16,9 @@ import scala.concurrent.{ ExecutionContext, Future }
  * The `Change Password` controller.
  */
 class ChangePasswordController @Inject() (
-                                           scc: SilhouetteControllerComponents,
-                                           changePassword: views.html.changePassword
-                                         )(implicit ex: ExecutionContext) extends SilhouetteController(scc) {
+  scc: SilhouetteControllerComponents,
+  changePassword: views.html.changePassword
+)(implicit ex: ExecutionContext) extends SilhouetteController(scc) {
 
   /**
    * Views the `Change Password` page.
