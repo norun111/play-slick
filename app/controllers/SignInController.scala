@@ -16,11 +16,11 @@ import scala.concurrent.{ ExecutionContext, Future }
  * The `Sign In` controller.
  */
 class SignInController @Inject() (
-                                   scc: SilhouetteControllerComponents,
-                                   signIn: views.html.signIn,
-                                   activateAccount: views.html.activateAccount,
-                                   totp: views.html.totp
-                                 )(implicit ex: ExecutionContext) extends AbstractAuthController(scc) {
+  scc: SilhouetteControllerComponents,
+  signIn: views.html.signIn,
+  activateAccount: views.html.activateAccount,
+  totp: views.html.totp
+)(implicit ex: ExecutionContext) extends AbstractAuthController(scc) {
 
   /**
    * Views the `Sign In` page.
