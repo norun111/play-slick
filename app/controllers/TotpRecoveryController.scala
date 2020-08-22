@@ -15,9 +15,9 @@ import scala.concurrent.{ ExecutionContext, Future }
  * The `TOTP` controller.
  */
 class TotpRecoveryController @Inject() (
-                                         scc: SilhouetteControllerComponents,
-                                         totpRecovery: views.html.totpRecovery
-                                       )(implicit ex: ExecutionContext) extends AbstractAuthController(scc) {
+  scc: SilhouetteControllerComponents,
+  totpRecovery: views.html.totpRecovery
+)(implicit ex: ExecutionContext) extends AbstractAuthController(scc) {
 
   /**
    * Views the TOTP recovery page.
