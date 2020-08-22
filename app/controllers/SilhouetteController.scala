@@ -63,26 +63,26 @@ trait SilhouetteComponents {
 trait SilhouetteControllerComponents extends MessagesControllerComponents with SilhouetteComponents
 
 final case class DefaultSilhouetteControllerComponents @Inject() (
-                                                                   silhouette: Silhouette[DefaultEnv],
-                                                                   userService: UserService,
-                                                                   authInfoRepository: AuthInfoRepository,
-                                                                   passwordHasherRegistry: PasswordHasherRegistry,
-                                                                   authTokenService: AuthTokenService,
-                                                                   mailerClient: MailerClient,
-                                                                   rememberMeConfig: RememberMeConfig,
-                                                                   clock: Clock,
-                                                                   credentialsProvider: CredentialsProvider,
-                                                                   socialProviderRegistry: SocialProviderRegistry,
-                                                                   totpProvider: GoogleTotpProvider,
-                                                                   avatarService: AvatarService,
-                                                                   messagesActionBuilder: MessagesActionBuilder,
-                                                                   actionBuilder: DefaultActionBuilder,
-                                                                   parsers: PlayBodyParsers,
-                                                                   messagesApi: MessagesApi,
-                                                                   langs: Langs,
-                                                                   fileMimeTypes: FileMimeTypes,
-                                                                   executionContext: scala.concurrent.ExecutionContext
-                                                                 ) extends SilhouetteControllerComponents
+  silhouette: Silhouette[DefaultEnv],
+  userService: UserService,
+  authInfoRepository: AuthInfoRepository,
+  passwordHasherRegistry: PasswordHasherRegistry,
+  authTokenService: AuthTokenService,
+  mailerClient: MailerClient,
+  rememberMeConfig: RememberMeConfig,
+  clock: Clock,
+  credentialsProvider: CredentialsProvider,
+  socialProviderRegistry: SocialProviderRegistry,
+  totpProvider: GoogleTotpProvider,
+  avatarService: AvatarService,
+  messagesActionBuilder: MessagesActionBuilder,
+  actionBuilder: DefaultActionBuilder,
+  parsers: PlayBodyParsers,
+  messagesApi: MessagesApi,
+  langs: Langs,
+  fileMimeTypes: FileMimeTypes,
+  executionContext: scala.concurrent.ExecutionContext
+) extends SilhouetteControllerComponents
 
 trait RememberMeConfig {
   def expiry: FiniteDuration
@@ -91,6 +91,6 @@ trait RememberMeConfig {
 }
 
 final case class DefaultRememberMeConfig(
-                                          expiry: FiniteDuration,
-                                          idleTimeout: Option[FiniteDuration],
-                                          cookieMaxAge: Option[FiniteDuration]) extends RememberMeConfig
+  expiry: FiniteDuration,
+  idleTimeout: Option[FiniteDuration],
+  cookieMaxAge: Option[FiniteDuration]) extends RememberMeConfig
