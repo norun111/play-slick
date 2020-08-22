@@ -33,8 +33,8 @@ object TotpSetupForm {
    * @param verificationCode Verification code for TOTP-authentication
    */
   case class Data(
-                   sharedKey: String,
-                   scratchCodes: Seq[PasswordInfo],
-                   scratchCodesPlain: Seq[String],
-                   verificationCode: String = "")
+    sharedKey: String,
+    scratchCodes: Seq[PasswordInfo],
+    scratchCodesPlain: Seq[String],
+    verificationCode: String = "")
 }
