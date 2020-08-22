@@ -29,8 +29,8 @@ object TotpForm {
    * @param verificationCode Verification code for TOTP-authentication
    */
   case class Data(
-                   userID: UUID,
-                   sharedKey: String,
-                   rememberMe: Boolean,
-                   verificationCode: String = "")
+    userID: UUID,
+    sharedKey: String,
+    rememberMe: Boolean,
+    verificationCode: String = "")
 }
