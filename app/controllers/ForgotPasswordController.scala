@@ -15,9 +15,9 @@ import scala.concurrent.{ ExecutionContext, Future }
  * The `Forgot Password` controller.
  */
 class ForgotPasswordController @Inject() (
-                                           components: SilhouetteControllerComponents,
-                                           forgotPassword: views.html.forgotPassword
-                                         )(implicit ex: ExecutionContext) extends SilhouetteController(components) {
+  components: SilhouetteControllerComponents,
+  forgotPassword: views.html.forgotPassword
+)(implicit ex: ExecutionContext) extends SilhouetteController(components) {
 
   /**
    * Views the `Forgot Password` page.
@@ -45,7 +45,7 @@ class ForgotPasswordController @Inject() (
         userService.retrieve(loginInfo).flatMap {
           case Some(user) if user.email.isDefined =>
             authTokenService.create(user.userID).map { authToken =>
-              val url = routes.view(authToken.id).absoluteURL()
+              val url = routes.ResetPasswordController.view(authToken.id).absoluteURL()
 
               mailerClient.send(Email(
                 subject = Messages("email.reset.password.subject"),
