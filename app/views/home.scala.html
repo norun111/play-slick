@@ -6,12 +6,11 @@
 @import forms.TotpSetupForm.Data
 @import com.mohiva.play.silhouette.impl.providers.GoogleTotpCredentials
 @import com.mohiva.play.silhouette.impl.providers.GoogleTotpInfo
-
 @this()(implicit webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 @(user: models.User, totpInfoOpt: Option[GoogleTotpInfo], totpDataOpt: Option[(Form[Data], GoogleTotpCredentials)] = None)(implicit request: RequestHeader, messages: Messages)
 
 @implicitFieldConstructor = @{
-    b3.vertical.fieldConstructor()
+    b4.vertical.fieldConstructor()
 }
 
 @main(messages("home.title"), Some(user)) {
@@ -20,7 +19,7 @@
             <hr class="col-md-12" />
             <h4 class="col-md-8">@messages("welcome.signed.in")</h4>
             <div class="col-md-4 text-right">
-                <img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" height="40px" />
+@*                <img src="@user.avatarURL.getOrElse(assets.path("images/silhouette.png"))" height="40px" />*@
             </div>
             <hr class="col-md-12" />
         </div>
@@ -66,12 +65,12 @@
                     </ul>
                     @helper.form(action = controllers.routes.TotpController.enableTotpSubmit()) {
                         @helper.CSRF.formField
-                        @b3.text(totpForm("verificationCode"), Symbol("_hiddenLabel") -> messages("totp.verification.code    "), Symbol("placeholder") -> messages("totp.verification.code"), Symbol("autocomplete") -> "off", Symbol("class") -> "form-control input-lg")
-                        @b3.hidden(totpForm("sharedKey"))
+                        @b4.text(totpForm("verificationCode"), Symbol("_hiddenLabel") -> messages("totp.verification.code    "), Symbol("placeholder") -> messages("totp.verification.code"), Symbol("autocomplete") -> "off", Symbol("class") -> "form-control input-lg")
+                        @b4.hidden(totpForm("sharedKey"))
                         @helper.repeat(totpForm("scratchCodes"), min = 1) { scratchCodeField =>
-                            @b3.hidden(scratchCodeField("hasher"))
-                            @b3.hidden(scratchCodeField("password"))
-                            @b3.hidden(scratchCodeField("salt"))
+                            @b4.hidden(scratchCodeField("hasher"))
+                            @b4.hidden(scratchCodeField("password"))
+                            @b4.hidden(scratchCodeField("salt"))
                         }
                         <div class="form-group">
                             <div>
