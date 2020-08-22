@@ -10,8 +10,8 @@ import utils.route.Calls
 import scala.concurrent.{ ExecutionContext, Future }
 
 abstract class AbstractAuthController(
-                                       scc: SilhouetteControllerComponents
-                                     )(implicit ex: ExecutionContext) extends SilhouetteController(scc) {
+  scc: SilhouetteControllerComponents
+)(implicit ex: ExecutionContext) extends SilhouetteController(scc) {
   /**
    * Performs user authentication
    * @param user User data
