@@ -18,9 +18,9 @@ import scala.concurrent.{ ExecutionContext, Future }
  * The `Sign Up` controller.
  */
 class SignUpController @Inject() (
-                                   components: SilhouetteControllerComponents,
-                                   signUp: views.html.signUp
-                                 )(implicit ex: ExecutionContext) extends SilhouetteController(components) {
+  components: SilhouetteControllerComponents,
+  signUp: views.html.signUp
+)(implicit ex: ExecutionContext) extends SilhouetteController(components) {
 
   /**
    * Views the `Sign Up` page.
