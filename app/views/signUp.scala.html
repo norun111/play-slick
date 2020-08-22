@@ -8,16 +8,16 @@
 @this()(implicit webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 @(signUpForm: Form[Data])(implicit request: RequestHeader, messages: Messages)
 
-@implicitFieldConstructor = @{ b3.vertical.fieldConstructor() }
+@implicitFieldConstructor = @{ b4.vertical.fieldConstructor() }
 
 @main(messages("sign.up.title")) {
     <fieldset class="col-md-6 col-md-offset-3">
         <legend>@messages("sign.up.account")</legend>
         @helper.form(action = controllers.routes.SignUpController.submit()) {
-            @helper.CSRF.formField
-            @b3.text(signUpForm("firstName"), Symbol("_hiddenLabel") -> messages("first.name"), Symbol("placeholder") -> messages("first.name"), Symbol("class") -> "form-control input-lg")
-            @b3.text(signUpForm("lastName"), Symbol("_hiddenLabel") -> messages("last.name"), Symbol("placeholder") -> messages("last.name"), Symbol("class") -> "form-control input-lg")
-            @b3.text(signUpForm("email"), Symbol("_hiddenLabel") -> messages("email"), Symbol("placeholder") -> messages("email"), Symbol("class") -> "form-control input-lg")
+
+            @b4.text(signUpForm("firstName"), Symbol("_hiddenLabel") -> messages("first.name"), Symbol("placeholder") -> messages("first.name"), Symbol("class") -> "form-control input-lg")
+            @b4.text(signUpForm("lastName"), Symbol("_hiddenLabel") -> messages("last.name"), Symbol("placeholder") -> messages("last.name"), Symbol("class") -> "form-control input-lg")
+            @b4.text(signUpForm("email"), Symbol("_hiddenLabel") -> messages("email"), Symbol("placeholder") -> messages("email"), Symbol("class") -> "form-control input-lg")
             @passwordStrength(signUpForm("password"), Symbol("_hiddenLabel") -> messages("password"), Symbol("placeholder") -> messages("password"), Symbol("class") -> "form-control input-lg")
             <div class="form-group">
                 <div>
