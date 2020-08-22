@@ -15,10 +15,10 @@ import scala.concurrent.{ ExecutionContext, Future }
  * The `TOTP` controller.
  */
 class TotpController @Inject() (
-                                 scc: SilhouetteControllerComponents,
-                                 totp: views.html.totp,
-                                 home: views.html.home
-                               )(implicit ex: ExecutionContext) extends AbstractAuthController(scc) {
+  scc: SilhouetteControllerComponents,
+  totp: views.html.totp,
+  home: views.html.home
+)(implicit ex: ExecutionContext) extends AbstractAuthController(scc) {
   /**
    * Views the `TOTP` page.
    * @return The result to display.
