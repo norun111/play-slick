@@ -13,9 +13,9 @@ import utils.route.Calls
 import scala.concurrent.ExecutionContext
 
 class ApplicationController @Inject() (
-                                        scc: SilhouetteControllerComponents,
-                                        home: views.html.home
-                                      )(implicit ex: ExecutionContext) extends SilhouetteController(scc) {
+  scc: SilhouetteControllerComponents,
+  home: views.html.home
+)(implicit ex: ExecutionContext) extends SilhouetteController(scc) {
   /**
    * Handles the index action.
    *
