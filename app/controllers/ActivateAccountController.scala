@@ -17,8 +17,8 @@ import scala.concurrent.{ ExecutionContext, Future }
  * The `Activate Account` controller.
  */
 class ActivateAccountController @Inject() (
-                                            scc: SilhouetteControllerComponents
-                                          )(implicit ex: ExecutionContext) extends SilhouetteController(scc) {
+  scc: SilhouetteControllerComponents
+)(implicit ex: ExecutionContext) extends SilhouetteController(scc) {
 
   /**
    * Sends an account activation email to the user with the given email.
