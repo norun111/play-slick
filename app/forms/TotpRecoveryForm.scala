@@ -29,8 +29,8 @@ object TotpRecoveryForm {
    * @param recoveryCode Verification code for TOTP-authentication
    */
   case class Data(
-                   userID: UUID,
-                   sharedKey: String,
-                   rememberMe: Boolean,
-                   recoveryCode: String = "")
+    userID: UUID,
+    sharedKey: String,
+    rememberMe: Boolean,
+    recoveryCode: String = "")
 }
