@@ -14,8 +14,8 @@ import scala.concurrent.{ ExecutionContext, Future }
  * The social auth controller.
  */
 class SocialAuthController @Inject() (
-                                       scc: SilhouetteControllerComponents
-                                     )(implicit ex: ExecutionContext) extends SilhouetteController(scc) {
+  scc: SilhouetteControllerComponents
+)(implicit ex: ExecutionContext) extends SilhouetteController(scc) {
   /**
    * Authenticates a user against a social provider.
    *
