@@ -47,9 +47,9 @@ class SignUpController @Inject() (
             val url = Calls.signin.absoluteURL()
             mailerClient.send(Email(
               subject = Messages("email.already.signed.up.subject"),
-              from = Messages("email.from"),
+              from = Messages("Mister FROM <from@gmail.com>"),
               to = Seq(data.email),
-              bodyText = Some(views.txt.emails.alreadySignedUp(user, url).body),
+              //              bodyText = Some(views.txt.emails.alreadySingedUp(user, url).body),
               bodyHtml = Some(views.html.emails.alreadySignedUp(user, url).body)
             ))
 
@@ -74,10 +74,10 @@ class SignUpController @Inject() (
             } yield {
               val url = routes.ActivateAccountController.activate(authToken.id).absoluteURL()
               mailerClient.send(Email(
-                subject = Messages("email.sign.up.subject"),
-                from = Messages("email.from"),
+                subject = Messages("email.already.signed.up.subject"),
+                from = Messages("Mister FROM <from@gmail.com>"),
                 to = Seq(data.email),
-                bodyText = Some(views.txt.emails.signUp(user, url).body),
+                //                bodyText = Some(views.txt.emails.singUp(user, url).body),
                 bodyHtml = Some(views.html.emails.signUp(user, url).body)
               ))
 
